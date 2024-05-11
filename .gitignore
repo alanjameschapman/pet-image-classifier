@@ -1,10 +1,23 @@
-core.Microsoft*
-core.mongo*
-core.python*
-env.py
+# Python
 __pycache__/
 *.py[cod]
+core.python*
+
+# Environment variables
+env.py
+
+# MongoDB
+core.mongo*
+
+# Microsoft
+core.Microsoft*
+
+# Node modules
 node_modules/
+
+# GitHub metadata
 .github/
+
+# Miscellaneous
 cloudinary_python.txt
 kaggle.json
