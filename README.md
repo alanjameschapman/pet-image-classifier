@@ -1,35 +1,3 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-## Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for the bring your own data project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly okay to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
-
-You can safely delete the Template Instructions section of this README.md file and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-1. Log into your cloud IDE with your GitHub account.
-
-1. On your Dashboard, click on the New Workspace button
-
-1. Paste in the URL you copied from GitHub earlier
-
-1. Click Create
-
-1. Wait for the workspace to open. This can take a few minutes.
-
-1. Open a new terminal and `pip3 install -r requirements.txt`
-
-1. Open the jupyter_notebooks directory, and click on the notebook you want to open.
-
-1. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.8.18 as it inherits from the workspace, so it will be Python-3.8.18 as installed by our template. To confirm this, you can use `! python --version` in a notebook code cell.
-
 ## Cloud IDE Reminders
 
 To log into the Heroku toolbelt CLI:
@@ -49,8 +17,9 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 
 
 ## Business Requirements
-* Describe your business requirements
-
+* The client wants to know the species of animal who is scheduled for a video call to discuss the animal's health with their owner.
+* The client wants to know any common diseases that the animal may have based on the species.
+* In the event that the model is unable to predict the species of the animal with 95% certainty, the client wants to know the top 3 species that the animal may belong to (along with images), along with the probability of each species.
 
 ## Hypothesis and how to validate?
 * List here your project hypothesis(es) and how you envision validating it (them) 
@@ -63,6 +32,65 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 ## ML Business Case
 * In the previous bullet, you potentially visualized an ML task to answer a business requirement. You should frame the business case using the method we covered in the course 
 
+Taken from handbook:
+- What are the business requirements? See above
+- Is there any business objective that can be answered with conventional data analysis? Yes, 
+- Does the client need a dashboard or an API endpoint? A dashboard is needed to display the results of the image classifier.
+- What does the client consider as a successful project outcome? The client considers a successful project outcome as a dashboard that can accurately predict the species of the animal and common diseases based on the species.
+- Can you break down the project into Epics and User Stories? Yes, each step of the CRISP-DM workflow will be a different epic and be broken down into user stories and tasks:
+    - Epic 1: Business Understanding
+        - User Story 1: Understand the business requirements and objectives.
+        Acceptance Criteria: The business requirements and objectives should be clearly defined and understood.
+            - Task 1: Meet with the client to discuss the business requirements and objectives.
+            - Task 2: Document the business requirements and objectives.
+        - User Story 2: Define the success criteria for the project.
+        Acceptance Criteria: The success criteria should be clearly defined and agreed upon by the client.
+            - Task 1: Define the success criteria for the project.
+            - Task 2: Review and finalize the success criteria with the client.
+    - Epic 2: Data Understanding
+        - User Story 1: Collect the dataset of images of animals.
+        Acceptance Criteria: The dataset should contain images of various species of animals.
+            - Task 1: Download the dataset from Kaggle.
+            - Task 2: Explore the dataset to understand its structure and contents. Study for average and variability (LO 3.1)
+        - User Story 2: Preprocess the images to prepare them for training.
+        Acceptance Criteria: The images should be resized and normalized to a standard size.
+            - Task 1: Extract relevant features on which to train the model.
+            - Task 2: Resize and normalize the images to a standard size (LO 3.1).
+    - Epic 3: Data Preparation
+        - User Story 1: Split the images into training, validation, and test sets.
+        Acceptance Criteria: The images should be split into training, validation, and test sets.
+            - Task 1: Split the images into training, validation, and test sets.
+            - Task 2: Plot the numbers of images in each set (LO 3.1).
+        - User Story 2: Train a Convolutional Neural Network (CNN) on the dataset.
+        Acceptance Criteria: The CNN model will be trained and evaluated on the training dataset.
+            - Task 1: Train the CNN on the training set.
+            - Task 2: Evaluate the model's performance on the validation set.
+    - Epic 4: Modeling
+        - User Story 1: Train a Convolutional Neural Network (CNN) on the dataset.
+        Acceptance Criteria: The CNN model will be trained and evaluated on the training dataset.
+            - Task 1: Split the images into training, validation, and test sets and plot numbers for each (LO 3.1).
+            - Task 2: Train the CNN on the training set.
+    - Epic 5: Evaluation
+        - User Story 1: Evaluate the model's performance on the test set.
+        Acceptance Criteria: The model should have an accuracy of at least 95% on the test set.
+            - Task 1: Evaluate the model's accuracy on the test set.
+            - Task 2: Generate a confusion matrix and Scikit Learn report to visualize the model's performance on the training and test sets (LO 5.2).
+            - Task 3: Evaluate and indicate the learning curve (loss and accuracy) of the model (LO 5.2) for both training and validation sets.
+    - Epic 6: Deployment
+        - User Story 1: Create a dashboard to display the results of the image classifier.
+        Acceptance Criteria: The dashboard should display the results of the image classifier.
+            - Task 1: Design the layout of the dashboard, listing the pages and content and how they relate to the business requirements (LO 6.1).
+            - Task 2: Implement the image classifier in the dashboard. Include image montage (LO 3.1)
+        - User Story 1: Deploy the model to the dashboard.
+        Acceptance Criteria: The model should be deployed to the dashboard.
+            - Task 1: Deploy the model to Heroku.
+            - Task 2: Test the model's performance on the dashboard.
+
+- Ethical or Privacy concerns? No, the dataset has been taken from Kaggle and is publicly available. The dataset does not contain any personal
+- Does the data suggest a particular model? Yes, a Convolutional Neural Network (CNN) is suggested to classify the images of animals based on their species.
+- What are the model's inputs and intended outputs? The model's inputs are images of animals and the intended outputs are the species of the animals, along with common diseases based on the species.
+- What are the criteria for the performance goal of the predictions? The model should have an accuracy of at least 95% in predicting the species of the animals.
+- How will the client benefit? The client will benefit by having a dashboard that can accurately predict the species of the animal and common diseases based on the species.
 
 ## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
@@ -113,3 +141,6 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 ## Acknowledgements (optional)
 * Thank the people that provided support through this project.
 
+
+## Project Notes
+Consider these alternatives to 'relu' for activation layers: 'elu', 'selu', and 'swish'.
