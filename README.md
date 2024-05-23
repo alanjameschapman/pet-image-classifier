@@ -8,10 +8,10 @@ The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a str
 
 ## Epic 1: Business Understanding
 The client's needs can be framed as user stories. As a consultant I want:
-- To know the species of animal who is scheduled for a video call to discuss the animal's health with their owner.
-- A summary of key info, images, and conditions that the animal may have.
-- To know the top 3 species that the animal may belong to, ranked by probability. NB. This will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
-- A dashboard (as opposed to an API) that can display the results of the image classifier.
+- To know the species of animal who is scheduled for a video call so that I can prepare for the consultation.
+- A summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner
+- To know the top 3 species that the animal may belong to, ranked by probability so that I can deal with model uncertainty in-consult. NB. This will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
+- A dashboard (as opposed to an API) so that I can view the results of the image classifier.
 
 The project requirement for conventional data analysis is covered by the user story concerning the summary of key info, images, and conditions that the animal may have. The consultant will use the images to determine the animal in-consult by comparing the images to the animal in the video call.
 
