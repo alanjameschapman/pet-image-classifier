@@ -7,13 +7,16 @@ The dashboard should also display the top 3 species that the animal may belong t
 The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a structured approach to planning a data mining project. Each step of the CRISP-DM workflow will be a different epic and be broken down into user stories and tasks:
 
 ## Epic 1: Business Understanding
-The client's needs can be framed as user stories. As a consultant I want:
-- To know the species of animal who is scheduled for a video call so that I can prepare for the consultation.
-- A summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner
-- To know the top 3 species that the animal may belong to, ranked by probability so that I can deal with model uncertainty in-consult. NB. This will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
-- A dashboard (as opposed to an API) so that I can view the results of the image classifier.
+The client's needs can be framed as user stories.
 
-The project requirement for conventional data analysis is covered by the user story concerning the summary of key info, images, and conditions that the animal may have. The consultant will use the images to determine the animal in-consult by comparing the images to the animal in the video call.
+| As a consultant I can... | ...so that I can... | Acceptance Criteria |
+| :- | :- | :- |
+| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. |
+| See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. |
+| Identify the top 3 animals that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. |
+| Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant
+
+The 'top 3' requirement will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
 
 ### Hypothesis and how to validate?
 We hypothesize that a Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the species of the animal based on a new and unseen image. We will validate this hypothesis by training a CNN on the dataset and evaluating its performance on a test set of animal images. As agreed with the client, the model should have an accuracy of at least 95% in predicting the species of the animals.
