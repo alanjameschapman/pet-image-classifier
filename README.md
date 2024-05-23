@@ -1,18 +1,19 @@
 # Executive Summary
 The client is an online veterinary clinic that offers video consultations with veterinarians. The client wants to develop an image classifier that can predict the species of an animal based on an image provided by the animal owner. This will help the consultants to prepare for the consultation and provide better care to the animals.
 
-The dashboard should also display the top 3 species that the animal may belong to, along with images, in the event that the model is unable to predict the species of the animal with 95% certainty. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult.:
+The dashboard should also display the top 3 species that the animal may belong to, along with images, in the event that the model is unable to predict the species of the animal with 95% certainty. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult.
 
 # CRISP-DM Workflow
 The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a structured approach to planning a data mining project. Each step of the CRISP-DM workflow will be a different epic and be broken down into user stories and tasks:
 
 ## Epic 1: Business Understanding
- The client wants:
+The client's needs can be framed as user stories. As a consultant I want:
 - To know the species of animal who is scheduled for a video call to discuss the animal's health with their owner.
-- To provide their consultants with a summary of key info and conditions that the animal may have based on their animal.
-- To know the top 3 species that the animal may belong to (along with images), in the event that the model is unable to predict the species of the animal with 95% certainty. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult.
+- A summary of key info, images, and conditions that the animal may have.
+- To know the top 3 species that the animal may belong to, ranked by probability. NB. This will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
 - A dashboard (as opposed to an API) that can display the results of the image classifier.
-- Conventional data analysis will be used to... (fill in the blank)
+
+The project requirement for conventional data analysis is covered by the user story concerning the summary of key info, images, and conditions that the animal may have. The consultant will use the images to determine the animal in-consult by comparing the images to the animal in the video call.
 
 ### Hypothesis and how to validate?
 We hypothesize that a Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the species of the animal based on a new and unseen image. We will validate this hypothesis by training a CNN on the dataset and evaluating its performance on a test set of animal images. As agreed with the client, the model should have an accuracy of at least 95% in predicting the species of the animals.
@@ -42,8 +43,13 @@ The business requirements of the client are to develop an image classifier that 
 
 
 # Agile Methodology
-The project was managed using Agile methodology, which is an iterative and incremental approach to software development. The project was divided into sprints, with each sprint lasting 2 weeks. The project will be divided into epics, user stories, and tasks, which will be tracked using a project management tool such as Trello or Jira. The Agile methodology will help ensure that the project is delivered on time and meets the client's requirements.
+The project was managed using Agile methodology, which is an iterative and incremental approach to software development. The project was divided into two sprints to coincide with the interim mentor meeting and final submission date. These dates were defined in GitHub projects as Milestones:
 
+![sprints](/docs/images/sprints.png)
+
+The Minimum Viable Product (MVP) would be presented at the interim mentor meeting, with the final product presented at the final submission date. In keeping with the CRISP-DM worklflow, the project was divided into epics, user stories, and tasks, which were tracked throughout the project as GitHub issues. Links are provided to see the development notes and screenshots for each.
+
+![pbi](/docs/images/pbi.png)
 
 ## Deployment
 ### Heroku
