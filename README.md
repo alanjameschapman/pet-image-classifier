@@ -12,8 +12,8 @@ The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a str
 
 The client's business requirements were framed as user stories for the purposes of managing via GitHub projects.
 
-| As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to Data Visualizations and ML tasks |
-| :- | :- | :- |
+| As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to data visualizations and ML tasks |
+| :- | :- | :- | :- |
 | Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | |
 | See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. | |
 | Identify the top 3 animals that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. | |
