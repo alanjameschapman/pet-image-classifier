@@ -1,34 +1,37 @@
 # Executive Summary
+
 The client is an online veterinary clinic that offers video consultations with veterinarians. The client wants to develop an image classifier that can predict the species of an animal based on an image provided by the animal owner. This will help the consultants to prepare for the consultation and provide better care to the animals.
 
 The dashboard should also display the top 3 species that the animal may belong to, along with images, in the event that the model is unable to predict the species of the animal with 95% certainty. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult.
 
 # CRISP-DM Workflow
+
 The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a structured approach to planning a data mining project. Each step of the CRISP-DM workflow will be a different epic and be broken down into user stories and tasks:
 
 ## Epic 1: Business Understanding
-The client's needs can be framed as user stories.
 
-| As a consultant I can... | ...so that I can... | Acceptance Criteria |
+The client's business requirements were framed as user stories for the purposes of managing via GitHub projects.
+
+| As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to Data Visualizations and ML tasks |
 | :- | :- | :- |
-| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. |
+| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | 
 | See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. |
 | Identify the top 3 animals that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. |
 | Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant
 
 The 'top 3' requirement will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
 
-### Hypothesis and how to validate?
-We hypothesize that a Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the species of the animal based on a new and unseen image. We will validate this hypothesis by training a CNN on the dataset and evaluating its performance on a test set of animal images. As agreed with the client, the model should have an accuracy of at least 95% in predicting the species of the animals.
+### Hypotheses and validation
 
-## ML Business Case
-- In the previous bullet, you potentially visualized an ML task to answer a business requirement. You should frame the business case using the method we covered in the course 
-- The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
-
-## The rationale to map the business requirements to the Data Visualizations and ML tasks
-The business requirements of the client are to develop an image classifier that can predict the animal based on an image. To meet this requirement, we will use a Convolutional Neural Network (CNN) to classify the images of animals based on their species. The CNN model will be trained on the dataset of images of animals and evaluated on a test set of images to determine its accuracy in predicting the species of the animals. The results of the image classifier will be displayed on a dashboard, which will provide the client with the species of the animal and common diseases based on the species. The dashboard will also display the top 3 species that the animal may belong to, along with images, in the event that the model is unable to predict the species of the animal with 95% certainty. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult.
+| Hypothesis | Validation |
+| :- | :- |
+| The chosen dataset of images of animals is representative of the animals that the consultants will encounter in practice | The dataset will be reviewed to ensure that it contains a diverse range of animals that the consultants may encounter in practice. |
+| A Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the animal based on a new and unseen image | training a CNN on the dataset and evaluating its performance on a test set of animal images. |
+| The model can predict the species of the animal with 95% accuracy | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. The results will be displayed on a dashboard. |
+| The model can predict the top 3 animals the image may belong to, in the event that the model is unable to predict the species of the animal with 95% certainty | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. |
 
 ## Epic 2: Data Understanding
+
 - The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/rafsunahmad/choose-your-pet).
 - There are 2262 images split into 74 directories (animals), where each directory has between 27 and 50 images; the median is perhaps 30 images per directory.
 - Images are high res (1000-2000px per side). Image file size ranges from 10kB-1MB with the median around 500kB perhaps. NB. GitHub docs suggests limit for GitHub Free plan is actually 2GB so this shouldn't cause a problem.
@@ -37,6 +40,9 @@ The business requirements of the client are to develop an image classifier that 
 ## Epic 3: Data Preparation
 
 ## Epic 4: Modeling
+
+The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
+
 
 ## Epic 5: Evaluation
 
