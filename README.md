@@ -14,10 +14,10 @@ The client's business requirements were framed as user stories for the purposes 
 
 | As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to Data Visualizations and ML tasks |
 | :- | :- | :- |
-| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | 
-| See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. |
-| Identify the top 3 animals that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. |
-| Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant
+| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | |
+| See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. | |
+| Identify the top 3 animals that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. | |
+| Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant | |
 
 The 'top 3' requirement will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
 
