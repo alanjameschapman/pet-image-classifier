@@ -34,7 +34,8 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 
 - The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/rafsunahmad/choose-your-pet).
 - There are 2262 images split into 74 directories (animals), where each directory has between 27 and 50 images; the median is perhaps 30 images per directory.
-- Images are high res (1000-2000px per side). Image file size ranges from 10kB-1MB with the median around 500kB perhaps. NB. GitHub docs suggests limit for GitHub Free plan is actually 2GB so this shouldn't cause a problem.
+- Image size: images are high res (1000-2000px per side).
+- File size: Image file size ranges from 10kB-1MB with the median around 500kB perhaps. NB. GitHub docs suggests limit for GitHub Free plan is actually 2GB so this shouldn't cause a problem. The total dataset size is around 1.1GB.
 - There are no Ethical or Privacy concerns regarding the dataset, which does not contain any personal information or sensitive data.
 
 ## Epic 3: Data Preparation
@@ -120,7 +121,7 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 
 - The following Kaggle notebook provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
 
-- The text for the Home page was taken from Wikipedia Article A
+- [file cmp method](https://docs.python.org/3/library/filecmp.html) for comparing files and identifying duplicates.
 - Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
