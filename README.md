@@ -38,6 +38,33 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 - File size: Image file size ranges from 10kB-1MB with the median around 500kB perhaps. NB. GitHub docs suggests limit for GitHub Free plan is actually 2GB so this shouldn't cause a problem. The total dataset size is around 1.1GB.
 - There are no Ethical or Privacy concerns regarding the dataset, which does not contain any personal information or sensitive data.
 
+The dataset was reviewed with the client to identify if there were any missing animals. The following dog breeds were identified:
+
+- Springer spaniel
+- Border collie
+- Jack russell terrier
+- Pugs.
+
+The client was satisfied that the dataset was not deficient in any other animal that was commonly seen during consults.
+
+Images of the aforementioned dog breeds were added to the dataset.
+
+The dataset was then checked for quantity and quality:
+
+| Quantity | Quality |
+| - | - |
+| ![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/8130687d-8f44-4e62-a4ac-b0289b78597c) | ![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/907070f0-966a-4a80-ac07-a17ded2bb3f6) |
+
+**Quantity**
+The majority of animals have between 27 and 30 images, which is anticipated as being enough to train the model. There is some variation either side of this (minimum = 17, maximum = 49), but it is anticipated that any bias can be removed at the next step. If there is difficulty training the model with this dataset, this will be rectified as required.
+
+**Quality**
+The minimum resolution across all images is 100 x 100px. Visually, the image appears to be recognisable as a great dane and therefore deemed acceptable:
+
+![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/80f64801-cc81-4cb1-af3c-2e9bd156e9f5)
+
+The resolution of many of the images will likely be higher than required. Resolution can be reduced at the next step ([#4](https://github.com/alanjameschapman/pet-image-classifier/issues/4)) to improve the efficiency and speed of the ML pipeline.
+
 ## Epic 3: Data Preparation
 
 ## Epic 4: Modeling
@@ -127,8 +154,7 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 
 ### Media
 
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+- Additional dataset images were downloaded from [Pexels](https://www.pexels.com/).
 
 
 ## Acknowledgements (optional)
