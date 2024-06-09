@@ -10,7 +10,7 @@ The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a str
 
 ## Epic 1: Business Understanding
 
-The client's business requirements were framed as user stories for the purposes of managing via GitHub projects and mapping to other project tasks. Links are provided to see the tasks, development notes and screenshots for each user story.
+The client's business requirements were framed as user stories for the purposes of managing via GitHub projects and mapping to other project tasks (LO2.1, LO2.2). Links are provided to see the tasks, development notes and screenshots for each user story.
 
 | As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to data visualizations and ML tasks |
 | :- | :- | :- | :- |
