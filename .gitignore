@@ -5,6 +5,7 @@ core.python*
 
 # Environment variables
 env.py
+# venv/
 
 # MongoDB
 core.mongo*
