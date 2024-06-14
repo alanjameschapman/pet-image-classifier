@@ -71,6 +71,16 @@ The resolution of many of the images will likely be higher than required. Resolu
 
 The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
 
+After trying two different models, the accuracy and loss plots showed that both struggled to converge over 50 epochs, This indicates that the models were not learning from the data and would not be able to make accurate predictions.
+
+| Model | Accuracy | Loss | Comments |
+| :- | :-: | :-: | :- |
+| v1 (CI Malaria walkthrough) | ![v1-accuracy](/outputs/v1/model_training_acc.png) | ![v1-loss](/outputs/v1/model_training_losses.png) | The accuracy was around x and the loss was around y. |
+| v2 (Kaggle [walkthrough](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook)) | ![v2-accuracy](/outputs/v2/model_training_acc.png) | ![v2-loss](/outputs/v2/model_training_losses.png) | The accuracy was around x and the loss was around y. |
+
+This was likely due to the dataset having too few images per animal - only 30 images on average.
+
+The next step would be to try transfer learning, but after another review of available pet datasets, it was agreed with the client that an alternative dataset would be used to see if that improved model performance. The new dataset is from [Kaggle](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification) and contains 20,600 images of dog breeds only. This dataset is more suitable for the client's requirements as it contains a better range of dog breeds (120 v 71 directories) and more images per breed (150 vs 30 images).
 
 ## Epic 5: Evaluation
 
