@@ -10,6 +10,8 @@ The CRISP-DM (Cross-Industry Standard Process for Data Mining) workflow is a str
 
 ## Epic 1: Business Understanding
 
+![business-understanding](/docs/images/business-understanding.png)
+
 The client's business requirements were framed as user stories for the purposes of managing via GitHub projects and mapping to other project tasks (LO2.1, LO2.2). Links are provided to see the tasks, development notes and screenshots for each user story.
 
 | As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to data visualizations and ML tasks |
@@ -23,14 +25,16 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 
 ### Hypotheses and validation
 
-| Hypothesis | Validation |
-| :- | :- |
-| The chosen dataset of images of animals is representative of the animals that the consultants will encounter in practice | The dataset will be reviewed to ensure that it contains a diverse range of animals that the consultants may encounter in practice. |
-| A Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the animal based on a new and unseen image | training a CNN on the dataset and evaluating its performance on a test set of animal images. |
-| The model can predict the species of the animal with 95% accuracy | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. The results will be displayed on a dashboard. |
-| The model can predict the top 3 animals the image may belong to, in the event that the model is unable to predict the species of the animal with 95% certainty | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. |
+| Hypothesis | Validation | Result |
+| :- | :- | :- |
+| The chosen dataset of images of animals is representative of the animals that the consultants will encounter in practice | The dataset will be reviewed to ensure that it contains a diverse range of animals that the consultants may encounter in practice. | Client was satisfied that the dataset was not deficient in any other animal that was commonly seen during consults. |
+| A Convolutional Neural Network (CNN) can be trained on the dataset of images of animals to accurately predict the animal based on a new and unseen image | The model can accurately predict the breed of an unseen image. | Two different datasets were trialled for model training. One with ca. 30 images per breed, another with ca. 150 images per breed. The latter performed better, but still required implementation of transfer learning i.e. using a pre-trained base model to produce sufficient results.  |
+| The model can predict the species of the animal with 95% accuracy | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. The results will be displayed on a dashboard. | The best accuracy achieved was around 80%. Whilst this failed to meet the 95% target, it was enough to provide the functionality required by the client of providing the top 3 breeds based on probability. |
+| The model can predict the top 3 animals the image may belong to, in the event that the model is unable to predict the species of the animal with 95% certainty | The model will be evaluated on a test set of images to determine its accuracy in predicting the species of the animals. | The model provides the functionality required by the client of providing the top 3 breeds based on probability. |
 
 ## Epic 2: Data Understanding
+
+![data-understanding](/docs/images/data-understanding.png)
 
 - The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/rafsunahmad/choose-your-pet).
 - There are 2262 images split into 74 directories (animals), where each directory has between 27 and 50 images; the median is perhaps 30 images per directory.
@@ -67,7 +71,13 @@ The resolution of many of the images will likely be higher than required. Resolu
 
 ## Epic 3: Data Preparation
 
+![data-preparation](/docs/images/data-preparation.png)
+
+The dataset was split into training and testing sets. The training set was used to train the model, and the testing set was used to evaluate the model's performance. The model was trained on the training set and then evaluated on the testing set to determine its accuracy.
+
 ## Epic 4: Modeling
+
+![modeling](/docs/images/modeling.png)
 
 The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
 
@@ -84,12 +94,67 @@ The next step would be to try transfer learning, but after another review of ava
 
 ## Epic 5: Evaluation
 
+
+
 ## Epic 6: Deployment
-- List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-- Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
+
+### Dashboard Design
+
+#### Page 1 - Project Overview
+
+- Display the project name, description, and purpose.
+- Describe the business problem and the solution.
+- Provide a link to the dataset.
+- Describe the dataset used to train the model.
+- Provide a link to the GitHub repository readme.
+
+#### Page 2 - Animal identification
+
+- Provide an image upload widget.
+- Display the predicted species of the animal.
+- Display the top 3 breeds that the animal may belong to, along with images and probabilities.
+- Button to select breed and display key info and common diseases.
+
+#### Page 4 - Hypotheses and Validation
+
+- Display the hypotheses stated above (see epic 2) and how they were validated.
+- Display the results of the validation.
+
+#### Page 5 - Model Performance Metrics
+
+- Display the model's performance metrics, including:
+    - Learning curves (plots of accuracy and loss)
+    - Confusion matrix for a batch size of 32 (not possible to display for the entire dataset of 120 breeds)
+- Generalised model performance on test set (table of accuracy and loss).
+
+### Heroku
+
+The App live link is: https://YOUR_APP_NAME.herokuapp.com/ (TBC)
+
+The project was deployed on Heroku using the following steps.
+1. Log in to Heroku and create an App
+2. Log into Heroku CLI in the IDE workspace terminal using the bash command: heroku login -i and enter credentials.
+3. Run the command git init to re-initialise the Git repository
+4. Run the command heroku git:remote -a YOUR_APP_NAME to connect the workspace and your Heroku app.
+5. Set the app's stack to heroku-20 using the bash command heroku stack:set heroku-20 to provide compatibility with the Python 3.10.9 version used for this project.
+6. Use git push heroku main to deploy the application to Heroku.
+
+### Forking the GitHub Project
+
+To create a copy of the GitHub repository to modify and experiment with without affecting the original repository, one can fork the repository:
+
+On the repository page, navigate to the Fork button on the top right corner of the page and click on it to create a copy of the repository which should then appear on your own GitHub account.
+
+### Making a Local Clone
+
+1. On the repository page, click on the Code button.
+2. To clone the repository using HTTPS, copy the HTTPS URL.
+3. Open the IDE of your choice and change the current working directory to the location where you want the cloned directory to be located.
+4. Type git clone and paste the previously copied URL to clone the repository.
 
 
 # Agile Methodology
+
 The project was managed using Agile methodology, which is an iterative and incremental approach to software development. The project was divided into two sprints to coincide with the interim mentor meeting and final submission date. These dates were defined in GitHub projects as Milestones:
 
 ![sprints](/docs/images/sprints.png)
@@ -97,21 +162,6 @@ The project was managed using Agile methodology, which is an iterative and incre
 The Minimum Viable Product (MVP) would be presented at the interim mentor meeting, with the final product presented at the final submission date. In keeping with the CRISP-DM worklflow, the project was divided into epics, user stories, and tasks, which were tracked throughout the project as GitHub issues. Links are provided to see the development notes and screenshots for each.
 
 ![pbi](/docs/images/pbi.png)
-
-## Deployment
-### Heroku
-
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
-
 
 ## Main Data Analysis and Machine Learning Libraries
 
@@ -164,6 +214,7 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 
 ### Media
 
+- Epic flow diagram guides were taken from the Code Institute's course notes.
 - Additional dataset images were downloaded from [Pexels](https://www.pexels.com/).
 
 
