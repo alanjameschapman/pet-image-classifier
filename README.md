@@ -79,7 +79,7 @@ The dataset was split into training and testing sets. The training set was used 
 
 ![modeling](/docs/images/modeling.png)
 
-The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
+### Development
 
 After trying two different models, the accuracy and loss plots showed that both struggled to converge over 50 epochs, This indicates that the models were not learning from the data and would not be able to make accurate predictions.
 
@@ -92,6 +92,16 @@ This was likely due to the dataset having too few images per animal - only 30 im
 
 The next step would be to try transfer learning, but after another review of available pet datasets, it was agreed with the client that an alternative dataset would be used to see if that improved model performance. The new dataset is from [Kaggle](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification) and contains 20,600 images of dog breeds only. This dataset is more suitable for the client's requirements as it contains a better range of dog breeds (120 v 71 directories) and more images per breed (150 vs 30 images).
 
+### Architecture
+
+The model's inputs are images of animals and the intended outputs are the species of the animals, along with key info and common diseases based on the animal.
+
+Transfer Learning, freezing lazers, flatten, inputs and outputs etc.
+
+### Optimization
+
+Adam optimizer, learning rate, batch size, epochs, callbacks, early stopping, dropout, etc.
+
 ## Epic 5: Evaluation
 
 
@@ -103,8 +113,8 @@ The next step would be to try transfer learning, but after another review of ava
 #### Page 1 - Project Overview
 
 - Display the project name, description, and purpose.
-- Describe the business problem and the solution.
-- Provide a link to the dataset.
+- Describe the business requirements.
+- Describe the dataset.
 - Describe the dataset used to train the model.
 - Provide a link to the GitHub repository readme.
 
@@ -113,19 +123,21 @@ The next step would be to try transfer learning, but after another review of ava
 - Provide an image upload widget.
 - Display the predicted species of the animal.
 - Display the top 3 breeds that the animal may belong to, along with images and probabilities.
-- Button to select breed and display key info and common diseases.
+- Button/checkbox to select breed and display key info and common diseases.
+- Link to the dataset.
 
-#### Page 4 - Hypotheses and Validation
+#### Page 3 - Hypotheses and Validation
 
 - Display the hypotheses stated above (see epic 2) and how they were validated.
 - Display the results of the validation.
 
-#### Page 5 - Model Performance Metrics
+#### Page 4 - Model Performance Metrics
 
-- Display the model's performance metrics, including:
-    - Learning curves (plots of accuracy and loss)
-    - Confusion matrix for a batch size of 32 (not possible to display for the entire dataset of 120 breeds)
+Display the model's performance metrics, including:
+- Learning curves (plots of accuracy and loss)
+- Confusion matrix for a batch size of 32 (not possible to display for the entire dataset of 120 breeds)
 - Generalised model performance on test set (table of accuracy and loss).
+- Precision, recall, and F1 score?
 
 ### Heroku
 
