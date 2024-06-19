@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 
+
 from src.ml.predictive_analysis import (
     load_model_and_predict,
     resize_input_image,
@@ -22,26 +23,26 @@ def page_identification():
                                      accept_multiple_files=False) # was True
 
     if image_buffer is not None:
-        # df_report = pd.DataFrame([])
         img_pil = (Image.open(image_buffer)).convert('RGB')
         st.info(f"Uploaded dog image: **{image_buffer.name}**")
-        img_array = np.array(img_pil)
+        # img_array = np.array(img_pil)
         st.image(img_pil,
-                 caption=f"Image Size: {img_array.shape[1]}px width "
-                         f"x {img_array.shape[0]}px height")
+                caption=f"Image Size: {img_pil.size[0]}px width "
+                        f"x {img_pil.size[1]}px height")
 
-        version = 'v4'
-        resized_img = resize_input_image(img=img_pil, version=version)
+        resized_img = resize_input_image(img=img_pil)
 
         st.image(resized_img,
-                 caption=f"Resized Image Size: {resized_img.shape[2]}px width "
-                         f"x {resized_img.shape[1]}px height")
+                caption=f"Resized Image Size: {resized_img.size[0]}px width "
+                        f"x {resized_img.size[1]}px height")
+
+        version = 'v5'
 
         predictions = load_model_and_predict(resized_img, version=version)
 
         # Print the top 3 predictions
-        print(f'Normalized predictions: {predictions}')
-
+        st.text(f'Normalized predictions: {predictions}')
+        
         # plot_probabilities(pred_proba, pred_class)
 
         # df_report = df_report.append({"Name": image.name,
