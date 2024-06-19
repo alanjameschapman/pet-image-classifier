@@ -24,3 +24,6 @@ cloudinary_python.txt
 kaggle.json
 
 # Large files
+*.png
+*.jpg
+*.jpeg
