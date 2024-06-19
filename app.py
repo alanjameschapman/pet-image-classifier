@@ -8,7 +8,7 @@ from app_pages.page_metrics import page_metrics
 from app_pages.page_overview import page_overview
 
 # Create an instance of the app
-app = MultiPage(app_name="pet-image-classifier-app")
+app = MultiPage(app_name="Dog Breed Identification")
 
 # Add app pages here
 app.add_page("Project Hypotheses", page_hypotheses)
