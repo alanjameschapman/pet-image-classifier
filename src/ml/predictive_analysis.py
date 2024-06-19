@@ -12,14 +12,10 @@ from src.data_management import load_pkl_file
 # from tensorflow.keras.preprocessing.image import img_to_array
 
 
-
-
 def resize_input_image(img: np.ndarray, version: str) -> np.ndarray:
     """
     Resize input image to image shape for model compatibility.
     """
-
-    # version = 'v4'
 
     image_shape = load_pkl_file(file_path=f"outputs/{version}/image_shape.pkl")
     img_resized = img.resize((image_shape[1], image_shape[0])) # , Image.ANTIALIAS removed
@@ -36,7 +32,7 @@ def load_model_and_predict(resized_img: np.ndarray, version: str): # , class_nam
     model = keras.models.load_model(f'outputs/{version}/model_fine_tuned.keras')
 
     # Load the class names
-    labels = load_pkl_file(file_path=f"outputs/{version}/labels.pkl")
+    class_names = load_pkl_file(file_path=f"outputs/{version}/class_indices.pkl")
 
     # Predict the probabilities of each class for the selected image
     predictions = model.predict(resized_img)
@@ -51,7 +47,7 @@ def load_model_and_predict(resized_img: np.ndarray, version: str): # , class_nam
     values = values / np.sum(values)
 
     # Get the top 3 class names and their normalized probabilities
-    top_3_classes = [f"{labels[index]}: {prob:.2f}" for index, prob in zip(indices[0], values[0])]
+    top_3_classes = [f"{class_names[index]}: {prob:.2f}" for index, prob in zip(indices[0], values[0])]
 
     return top_3_classes
 

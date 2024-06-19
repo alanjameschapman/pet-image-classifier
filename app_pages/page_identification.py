@@ -37,8 +37,7 @@ def page_identification():
                  caption=f"Resized Image Size: {resized_img.shape[2]}px width "
                          f"x {resized_img.shape[1]}px height")
 
-        predictions = load_model_and_predict(resized_img,
-                                                        version=version)
+        predictions = load_model_and_predict(resized_img, version=version)
 
         # Print the top 3 predictions
         print(f'Normalized predictions: {predictions}')
