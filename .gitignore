@@ -23,7 +23,6 @@ node_modules/
 cloudinary_python.txt
 kaggle.json
 
-# Large files
-*.png
+# Image files
 *.jpg
 *.jpeg

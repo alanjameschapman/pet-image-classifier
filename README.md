@@ -36,36 +36,23 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 
 ![data-understanding](/docs/images/data-understanding.png)
 
-- The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/rafsunahmad/choose-your-pet).
-- There are 2262 images split into 74 directories (animals), where each directory has between 27 and 50 images; the median is perhaps 30 images per directory.
-- Image size: images are high res (1000-2000px per side).
-- File size: Image file size ranges from 10kB-1MB with the median around 500kB perhaps. NB. GitHub docs suggests limit for GitHub Free plan is actually 2GB so this shouldn't cause a problem. The total dataset size is around 1.1GB.
+- The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification/).
+- There are 20,600 images split into 120 directories (dog breeds), with a total file size of 777MB. This gives around:
+- File number per breed: 170 images.
+- Image size: 440x390px.
+- File size: 37kB.
 - There are no Ethical or Privacy concerns regarding the dataset, which does not contain any personal information or sensitive data.
 
-The dataset was reviewed with the client to identify if there were any missing animals. The following dog breeds were identified:
-
-- Springer spaniel
-- Border collie
-- Jack russell terrier
-- Pugs.
-
-The client was satisfied that the dataset was not deficient in any other animal that was commonly seen during consults.
-
-Images of the aforementioned dog breeds were added to the dataset.
+The dataset was reviewed with the client to identify if there were any missing animals. The client was satisfied that the dataset was not deficient in any other animal that was commonly seen during consults.
 
 The dataset was then checked for quantity and quality:
 
 | Quantity | Quality |
-| - | - |
-| ![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/8130687d-8f44-4e62-a4ac-b0289b78597c) | ![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/907070f0-966a-4a80-ac07-a17ded2bb3f6) |
+| :-: | :-: |
+| ![Quantity per breed](/outputs/v5/images_per_dir.png) | ![Average Image Size](/outputs/v5/av_image_dims.png) |
+| The median is around 160 images per breed, with a range of around 100-230 images. Outliers are saved in the `outlier_dirs.pkl` file and can be removed if training bias is identified. | The average image size is 440x390px, with a range of 100-3000px. The smallest image size across all images is 105 x 100px. Visually, the image appears to be recognisable as a Rhodesian Ridgeback, and therefore deemed acceptable. See below. |
 
-**Quantity**
-The majority of animals have between 27 and 30 images, which is anticipated as being enough to train the model. There is some variation either side of this (minimum = 17, maximum = 49), but it is anticipated that any bias can be removed at the next step. If there is difficulty training the model with this dataset, this will be rectified as required.
-
-**Quality**
-The minimum resolution across all images is 100 x 100px. Visually, the image appears to be recognisable as a great dane and therefore deemed acceptable:
-
-![Image](https://github.com/alanjameschapman/pet-image-classifier/assets/137620143/80f64801-cc81-4cb1-af3c-2e9bd156e9f5)
+![Min Res Image](/outputs/v5/min_res_image.png)
 
 The resolution of many of the images will likely be higher than required. Resolution can be reduced at the next step ([#4](https://github.com/alanjameschapman/pet-image-classifier/issues/4)) to improve the efficiency and speed of the ML pipeline.
 

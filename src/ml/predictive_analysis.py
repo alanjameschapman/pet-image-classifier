@@ -17,8 +17,8 @@ def resize_input_image(img: np.ndarray, version: str) -> np.ndarray:
     Resize input image to image shape for model compatibility.
     """
 
-    image_shape = load_pkl_file(file_path=f"outputs/{version}/image_shape.pkl")
-    img_resized = img.resize((image_shape[1], image_shape[0])) # , Image.ANTIALIAS removed
+    image_shape = (224, 224) # Image shape required by the model
+    img_resized = img.resize(image_shape)
     my_image = np.expand_dims(img_resized, axis=0) # Add /255 if needed
 
     return my_image
