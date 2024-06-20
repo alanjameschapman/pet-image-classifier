@@ -25,16 +25,15 @@ def page_identification():
     if image_buffer is not None:
         img_pil = (Image.open(image_buffer)).convert('RGB')
         st.info(f"Uploaded dog image: **{image_buffer.name}**")
-        # img_array = np.array(img_pil)
         st.image(img_pil,
                 caption=f"Image Size: {img_pil.size[0]}px width "
                         f"x {img_pil.size[1]}px height")
 
         resized_img = resize_input_image(img=img_pil)
 
-        st.image(resized_img,
-                caption=f"Resized Image Size: {resized_img.size[0]}px width "
-                        f"x {resized_img.size[1]}px height")
+        # st.image(resized_img,
+        #         caption=f"Resized Image Size: {resized_img.size[0]}px width "
+        #                 f"x {resized_img.size[1]}px height")
 
         version = 'v5'
 

@@ -4,7 +4,7 @@ import streamlit as st
 def page_hypotheses():
     '''Function to display the hypotheses page'''
 
-    st.title("Hypothesese, validations and results")
+    st.header("Hypotheses, validations and results")
 
     st.markdown('''
     | Hypothesis | Validation | Result |

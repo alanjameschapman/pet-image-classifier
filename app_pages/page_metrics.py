@@ -1,63 +1,57 @@
+import os
 import streamlit as st
-# import matplotlib.pyplot as plt
-# import pandas as pd
+import matplotlib.pyplot as plt
+import pandas as pd
 # from matplotlib.image import imread
-# from src.ml.evaluate_clf import load_test_evaluation
+from src.ml.evaluate_clf import load_test_evaluation
 
 
 def page_metrics():
     '''Function to display the model metrics page'''
 
-    st.write("### Train, Validation and Test Set: Labels Frequencies")
+    version = 'v5'
+    base_dir = os.path.dirname((os.path.dirname(__file__)))
+    outputs = os.path.join(base_dir, f'outputs/{version}')
 
-    # Displaying labels distribution on train, validation and test sets
-    # labels_distribution = plt.imread(
-    #     f"outputs/{version}/labels_distribution.png")
-    # st.image(labels_distribution,
-    #          caption='Labels Distribution on Train, Validation and Test Sets')
-    # st.write(f"From these metrics...
-    # st.write("---")
+    st.header("Model Metrics")
 
-    # st.write("### Model History")
-    # col1, col2 = st.beta_columns(2)
-    # with col1:
-    #     # Displaying model training accuracy
-    #     model_acc = plt.imread(f"outputs/{version}/model_training_acc.png")
-    #     st.image(model_acc, caption='Model Training Accuracy')
-    # with col2:
-    #     # Displaying model training losses
-    #     model_loss = plt.imread(f"outputs/{version}/model_training_losses.png")
-    #     st.image(model_loss, caption='Model Training Losses')
+    st.write("Train, Validation and Test Set: Labels Frequencies")
 
+    st.image((f"{outputs}/images_per_dir.png"), caption="Number of images per directory")
 
-    # st.write("---")
+    st.write('The median is around 160 images per breed, with a range of around 100-230 images. '
+    'Outliers are saved in the `outlier_dirs.pkl` file and can be removed if training bias is identified.')
+    
+    st.write("---")
 
-    # st.write("### Generalised Performance on Test Set")
+    st.header('Learning Curves')
 
-    # # Loading and displaying test set evaluation metrics (loss and accuracy)
-    # # evaluation = load_test_evaluation(version)
-    # # df_evaluation = pd.DataFrame(evaluation, index=['Loss', 'Accuracy'])
-    # # st.dataframe(df_evaluation)
+    st.write('Learning curves show how the model learns with respect to accuracy and loss as it sees new data.'
+    ' The aim is to have training and validation curves which converge over time. ')
 
-    # st.write('The model has a loss of ... and an accuracy of ...')
+    st.image((f"{outputs}/learning_curve_tuned_acc.png"), caption="Training accuracy")
 
-    # st.write("---")
+    st.write('The training accuracy curves converged at around 80% and there are no fluctuations or divergences.'
+    'We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
 
-    # # Displaying the confusion matrix
-    # # confusion_matrix = plt.imread(f"outputs/{version}/confusion_matrix.png")
-    # # st.image(confusion_matrix, caption="Confusion Matrix", width=500)
+    st.image((f"{outputs}/learning_curve_tuned_loss.png"), caption="Training loss")
 
-    # st.write('The matrix has four quadrants:')
+    st.write('The training loss curves converged at around 0.75 and there are no fluctuations or divergences.'
+    'We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
 
-    # st.write("### Classification Report")
+    st.write("---")
 
-    # # Displaying the classification report
-    # # classification_report = plt.imread(
-    # #     f"outputs/{version}/classification_report.png")
-    # # st.image(classification_report, caption='Classification Report')
+    st.header("Generalised Performance on Test Set")
 
-    # st.write('The classification report shows...')
+    # Loading and displaying test set evaluation metrics (loss and accuracy)
+    evaluation = load_test_evaluation(version)
+    df_evaluation = pd.DataFrame(evaluation, index=['Accuracy', 'Loss'])
+    st.dataframe(df_evaluation)
 
-    # st.write("---")
+    st.write('The model has an accuracy and loss of around 83% and 0.75 respectively. An accuracy of 83% '
+    'tells us that the model is good at predicting on unseen test data. Coupled with the dashboard giving three'
+    'top predictions based on accuracy, this value should be ample for our purposes. The loss tells us how far'
+    'the predicted values deviate from the actual values and 0.75 can be considered good for classification '
+    'with 120 classes.')
 
-    # st.write("### ROC Curve")
+    st.write("---")

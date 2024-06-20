@@ -4,9 +4,9 @@ import streamlit as st
 def page_overview():
     '''Function to display the project overview page'''
 
-    st.write("Project Overview")
+    st.header("Project Overview")
 
-    st.info('The client is an online veterinary clinic that offers video '
+    st.write('The client is an online veterinary clinic that offers video '
             'consultations with veterinarians. The client wants to develop an '
             'image classification dashboard that can identify the breed of a dog based '
             'on an image provided by the owner. This will help the '
