@@ -1,9 +1,9 @@
-jupyter_notebooks/*
-docs/*
-ouputs/v1*
-ouputs/v2*
-ouputs/v3*
-ouputs/v4*
+jupyter_notebooks/**
+docs/**
+outputs/v1**
+outputs/v2**
+outputs/v3**
+outputs/v4**
 README.md
 .gitpod.dockerfile
 .gitpod.yml
