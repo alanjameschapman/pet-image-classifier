@@ -3,6 +3,7 @@ from tensorflow import keras
 import tensorflow as tf
 import pickle
 import numpy as np
+import os
 # import pandas as pd
 # import plotly.express as px
 # from tensorflow.keras.models import load_model
@@ -10,6 +11,7 @@ from PIL import Image
 # from typing import Tuple, Union, Literal
 from src.data_management import load_pkl_file
 from tensorflow.keras.preprocessing.image import img_to_array
+from keras.models import load_model
 
 
 def resize_input_image(img): # : np.ndarray
@@ -41,9 +43,10 @@ def load_model_and_predict(resized_img, version): # , class_names: list removed
     Load and perform ML prediction on live images
     """
     
-    outputs = f'/Users/gingermale/Documents/repos/pet-image-classifier/outputs/{version}'
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    outputs = os.path.join(base_dir, f'outputs/{version}')
 
-    model = tf.keras.models.load_model(f'{outputs}/model_fine_tuned.h5')
+    model = load_model(f'{outputs}/model_fine_tuned.h5')
 
     # Load the class names
     class_names = load_pkl_file(file_path=f"{outputs}/class_names.pkl")
