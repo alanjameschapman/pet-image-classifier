@@ -7,12 +7,6 @@ core.python*
 env.py
 .venv/
 
-# MongoDB
-core.mongo*
-
-# Microsoft
-core.Microsoft*
-
 # Node modules
 node_modules/
 
