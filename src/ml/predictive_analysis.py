@@ -4,26 +4,20 @@ import tensorflow as tf
 import pickle
 import numpy as np
 import os
-# import pandas as pd
-# import plotly.express as px
-# from tensorflow.keras.models import load_model
 from PIL import Image
-# from typing import Tuple, Union, Literal
 from src.data_management import load_pkl_file
 from tensorflow.keras.preprocessing.image import img_to_array
 from keras.models import load_model
 
 
-def resize_input_image(img): # : np.ndarray
+def resize_input_image(img):
     """
     Resize input image to image shape for model compatibility.
     """
 
     size = (224, 224) # Image shape required by the model
-    # img_resized = img.resize(image_size)
-    # my_image = np.expand_dims(img_resized, axis=0) # Add /255 if needed
 
-    img = img.convert('RGB')  # Convert image to RGB mode
+    img = img.convert('RGB')
 
     img.thumbnail(size)
 
@@ -38,7 +32,7 @@ def resize_input_image(img): # : np.ndarray
     return resized_image
 
 
-def load_model_and_predict(resized_img, version): # , class_names: list removed
+def load_model_and_predict(resized_img, version):
     """
     Load and perform ML prediction on live images
     """
@@ -71,12 +65,3 @@ def load_model_and_predict(resized_img, version): # , class_names: list removed
     top_3_classes = [f"{class_names[index]}: {prob:.2f}" for index, prob in zip(indices[0], values[0])]
 
     return top_3_classes
-
-
-# def plot_probabilities():
-#     """
-#     Plot prediction probability
-#     """
-
-#     st.write('Plotting prediction probability...')
-

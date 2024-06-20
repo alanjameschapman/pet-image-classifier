@@ -6,4 +6,8 @@ def load_test_evaluation(version):
     '''
     Loads pickle file using function imported from data management
     '''
-    return load_pkl_file(f'outputs/{version}/evaluation.pkl')
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    outputs = os.path.join(base_dir, f'outputs/{version}')
+
+    return load_pkl_file(f'{outputs}/evaluation.pkl')
