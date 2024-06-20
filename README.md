@@ -198,17 +198,15 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 - [HTML](https://html.spec.whatwg.org/) is the standard markup language for documents designed to be displayed in a web browser.
 
 
-## Credits 
-
-- In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
+## Credits and Acknowledgements
 
 ### Content 
 
+- I used a Tensorflow tutorial for implementing transfer learning. I modified it from binary to multiclassification. Google colab link [here](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning.ipynb?force_kitty_mode=1&force_corgi_mode=1#scrollTo=PpA8PlpQKygw).
 - The following Kaggle notebook provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
+- Cherry Leave Mildew Detection [repo](https://github.com/oks-erm/ML-mildew-detection/tree/main)
 
 - [file cmp method](https://docs.python.org/3/library/filecmp.html) for comparing files and identifying duplicates.
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
 
 ### Media
@@ -217,7 +215,7 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 - Additional dataset images were downloaded from [Pexels](https://www.pexels.com/).
 
 
-## Acknowledgements (optional)
+### Acknowledgements
 - My wife and kids for their patience and understanding.
 - My mentor Marcel, for his guidance and support.
 - Code Institute Slack community for their support.

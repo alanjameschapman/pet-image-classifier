@@ -11,9 +11,9 @@ from app_pages.page_overview import page_overview
 app = MultiPage(app_name="Dog Breed Identification")
 
 # Add app pages here
-app.add_page("Project Hypotheses", page_hypotheses)
-app.add_page("Breed Identification", page_identification)
-app.add_page("Model Metrics", page_metrics)
 app.add_page("Project Overview", page_overview)
+app.add_page("Breed Identification", page_identification)
+app.add_page("Project Hypotheses", page_hypotheses)
+app.add_page("Model Metrics", page_metrics)
 
 app.run()
