@@ -91,11 +91,11 @@ This dataset is more suitable for the client's requirements as it contains a bet
 
 ### Architecture
 
-Based on the author's research for multi-class models, it was determined that despite the larger dataset, transfer learning would still be required. This requires taking an existing model which is 'pre-trained' on a separate and very large image dataset, and placing our own classifier model on top of it to create a 'compound' model. The base model has generically useful features which our classifier model can repurpose for our task.
+Based on the author's research for multi-class models, it was determined that despite the larger dataset, transfer learning would still be required. This required taking an existing model which was 'pre-trained' on a separate and very large image dataset, and placing the classifier model on top of it to create a 'compound' model. The base model has generically useful features which can be repurposed for the classifier task.
 
-![base model summary](/docs/images/base_model_summary.png)
+![base model summary](/docs/images/v5_base_model_summary.png)
 
-The resulting model (v5) can be fine-tuned by 'unfreezing' the top few layers of the pre-trained model so that they can be trained together with our own classifier model (v5 tuned).
+The resulting model (v5) was fine-tuned by 'unfreezing' the top few layers of the pre-trained model so that they can be trained together with the classifier model (v5 tuned).
 
 ![v5 model summary](/docs/images/v5_model_summary.png)
 
@@ -113,7 +113,7 @@ The resulting model (v5) can be fine-tuned by 'unfreezing' the top few layers of
 
 For a model with 120 classes, it isn't helpful to create a confusion matrix, classification report or Receiver Operating Characteristic (ROC) curve, but the generalised performance on the test set shows that the model performs well.
 
-![evaluation](/docs/images/evaluation.png)
+![v5_model_tuned_evaluation](/outputs/v5/model_tuned_evaluation.png)
 
 Moreover, due to the fact that the top 3 predictions will be presented on the dashboard, this will help to mitigate against model uncertainty.
 

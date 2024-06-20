@@ -62,6 +62,8 @@ def load_model_and_predict(resized_img, version):
     values = values / np.sum(values)
 
     # Get the top 3 class names and their normalized probabilities
-    top_3_classes = [f"{class_names[index]}: {prob:.2f}" for index, prob in zip(indices[0], values[0])]
+    top_3_classes = [
+        f"{class_names[index]} with {prob:.2f} certainty." for index, prob in zip(indices[0], values[0])
+    ]
 
     return top_3_classes
