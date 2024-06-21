@@ -2,7 +2,7 @@ import streamlit as st
 
 
 # BACKGROUND_IMAGE = 'https://i.imgur.com/Y9PEcSM.png'
-# ICON = 'https://img.icons8.com/external-flat-icons-inmotus-design/256/external-Leaf-ui-flat-icons-inmotus-design.png'
+ICON = 'https://www.flaticon.com/free-icon/footprint_9707691?term=puppy&page=1&position=4&origin=search&related_id=9707691'
 
 
 # Define CSS style
@@ -31,7 +31,7 @@ class MultiPage:
 
         st.set_page_config(
             page_title=self.app_name,
-            page_icon="🐶")
+            page_icon=ICON)
 
         # set_background(BACKGROUND_IMAGE)
 

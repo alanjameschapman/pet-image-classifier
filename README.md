@@ -1,8 +1,12 @@
 # Executive Summary
 
+![responsive](/docs/images/responsive.png)
+
 The client is an online veterinary clinic that offers video consultations with veterinarians. The client wants to develop an image classification dashboard that can identify the breed of a dog based on an image provided by the owner. This will help the consultants prepare for the consultation and ultimately provide better care for the dogs.
 
 The dashboard should also display the top 3 breeds that the dog might belong to (according to model certainty) along with images and key information. An intuitive and quantitive probability of each breed will be provided to help the consultant determine the animal in-consult. This will be particularly useful if the dog is mixed breed.
+
+The live link is [here](https://pet-image-classifier-5fbc327c6281.herokuapp.com/).
 
 # CRISP-DM Workflow
 
@@ -117,9 +121,11 @@ The v5 model was then fine-tuned by 'unfreezing' the top few layers of the base 
 
 ### Model Prediction
 
-For a model with 120 classes, it isn't helpful to create a confusion matrix, classification report or Receiver Operating Characteristic (ROC) curve, but the generalised performance on the test set shows that the model performs well.
+For a model with 120 classes, it isn't helpful to create a confusion matrix, classification report or Receiver Operating Characteristic (ROC) curve, but the generalised performance on the test set is as follows:
 
 ![v5_model_tuned_evaluation](/outputs/v5/model_tuned_evaluation.png)
+
+The model has an accuracy and loss of around 83% and 0.75 respectively. An accuracy of 83% tells us that the model is good at predicting on unseen test data. Coupled with the dashboard giving threetop predictions based on accuracy, this value should be ample for our purposes. The loss tells us how farthe predicted values deviate from the actual values and 0.75 can be considered good for classification with 120 classes.
 
 Moreover, due to the fact that the top 3 predictions will be presented on the dashboard, this will help to mitigate against model uncertainty.
 
@@ -245,22 +251,6 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 - [Jupyter Notebook](https://jupyter.org/): Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text.
 - [Heroku](https://www.heroku.com/) is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
 
-## Credits and Acknowledgements
-
-### Content 
-
-- I used a Tensorflow tutorial for implementing transfer learning. I modified it from binary to multiclassification. Google colab link [here](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning.ipynb?force_kitty_mode=1&force_corgi_mode=1#scrollTo=PpA8PlpQKygw).
-- The following Kaggle notebooks provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
-- Cherry Leave Mildew Detection [repo](https://github.com/oks-erm/ML-mildew-detection/tree/main).
-
-### Media
-
-- CRISP-DM flow diagram guides were taken from the Code Institute's course notes.
-
-### Acknowledgements
-- My wife and kids for their patience and understanding.
-- My mentor Marcel, for his guidance and support.
-
 # Manual Testing
 
 ## User Input Validation
@@ -292,3 +282,19 @@ Browser compatibility was tested throughout the project as shown below. Using th
 | Chrome | Firefox | Safari |
 | :-: | :-: | :-: |
 | &check; | &check; | &check; |
+
+## Credits and Acknowledgements
+
+### Content 
+
+- I used a Tensorflow tutorial for implementing transfer learning. I modified it from binary to multiclassification. Google colab link [here](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning.ipynb?force_kitty_mode=1&force_corgi_mode=1#scrollTo=PpA8PlpQKygw).
+- The following Kaggle notebooks provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
+- Cherry Leave Mildew Detection [repo](https://github.com/oks-erm/ML-mildew-detection/tree/main).
+
+### Media
+
+- CRISP-DM flow diagram guides were taken from the Code Institute's course notes.
+
+### Acknowledgements
+- My wife and kids for their patience and understanding.
+- My mentor Marcel, for his guidance and support.
