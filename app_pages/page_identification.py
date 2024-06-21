@@ -13,7 +13,11 @@ from src.ml.predictive_analysis import (
 def page_identification():
     '''Function to display the breed identification page'''
 
-    st.header('Upload your image below to identify the breed.')
+    st.header('Instructions')
+
+    st.write('Ensure your image is of good quality to improve prediction.\n\n'
+    '- Lighting: not too dark or bright.\n\n'
+    '- Composition: only the dog, avoid including people or other distinct objects.\n\n')
 
     image_buffer = st.file_uploader(label='Image uploader', type=['png', 'jpg', 'jpeg'], accept_multiple_files=False)
 

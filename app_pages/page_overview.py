@@ -13,7 +13,7 @@ def page_overview():
             'consultants prepare for the consultation and ultimately provide better '
             'care for the dogs.\n\n'
             'The dashboard should also display the top 3 breeds that the '
-            'dog might belong to (according to model certainty). An intuitive and quantitive '
+            'dog might belong to according to model certainty. An intuitive and quantitive '
             'probability of each breed will be '
             'provided to help the consultant determine the animal in-consult. '
             'This will be particularly useful if the dog is mixed breed. ')

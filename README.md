@@ -133,7 +133,6 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 
 #### Page 1 - Project Overview
 
-**Features**:
 - Display the project name, description, and purpose.
 - Describe the business requirements.
 - Provide a link to the GitHub repository readme.
@@ -167,16 +166,41 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 ![learning_curves](/docs/images/learning_curves.png)
 ![metrics](/docs/images/generalised_performance.png)
 
+### Future Work
+
+#### Issue [#9](https://github.com/alanjameschapman/pet-image-classifier/issues/9) - Plan monitoring and maintenance of the model
+
+As a developer I can plan monitoring and maintenance of the model so that I can ensure the business tool retains value to the client.
+
+**Acceptance Criteria**
+- Monitoring and maintenance plan is documented.
+- Business tool retains value to the client.
+
+**Tasks**
+- Discuss and formulate a plan with the client.
+- Document the plan with the client.
+- Report all project findings.
+
+#### Issue[#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) - See a summary of key info, images and common conditions
+
+As a consultant I can see a summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner.
+
+**Acceptance Criteria**
+- Images and info displayed on dashboard.
+
+**Tasks**
+- Display images and info based on prediction.
+
 ### Heroku
 
-The App live link is: https://pet-image-classifier.herokuapp.com/
+The App live link is: https://pet-image-classifier-5fbc327c6281.herokuapp.com/
 
 The project was deployed on Heroku using the following steps.
 1. Log in to Heroku and create an App
 2. Log into Heroku CLI in the IDE workspace terminal using the bash command: heroku login -i and enter credentials.
 3. Run the command git init to re-initialise the Git repository
 4. Run the command heroku git:remote -a pet-image-classifier to connect the workspace and your Heroku app.
-5. Set the app's stack to heroku-20 using the bash command heroku stack:set heroku-20 to provide compatibility with the Python 3.10.9 version used for this project.
+5. Set the app's stack to heroku-20 using the bash command heroku stack:set heroku-20 to provide compatibility with the Python 3.8.18 version used for this project.
 6. Use git push heroku main to deploy the application to Heroku.
 
 ### Forking the GitHub Project
@@ -256,7 +280,7 @@ User inputs were validated for various incorrect inputs throughout the project. 
 
 The responsiveness to different screen sizes was checked throughout the project. Results for the final site are shown below:
 
-![mvpiphone678](/docs/images/responsive.png)
+![responsive](/docs/images/responsive.png)
 
 ## Browser Compatibility
 
@@ -268,19 +292,3 @@ Browser compatibility was tested throughout the project as shown below. Using th
 | Chrome | Firefox | Safari |
 | :-: | :-: | :-: |
 | &check; | &check; | &check; |
-
-## Lighthouse
-
-The WAVE Web Accessibility Evaluation Tool was used throughout the project to check for accessibility issues. Lighthouse was then used to test the performance, accessibility, best practices and SEO of the deployed site. The PWA score not showing is a [known feature](https://stackoverflow.com/questions/60603960/why-lighthouse-pwa-score-is-blank-even-though-the-page-is-audited).
-
-Page | Mobile | Desktop | Comment |
-| :-: | :-: | :-: | :-: |
-| [register](https://whiteboard-app-742f545f1848.herokuapp.com/accounts/signup/) | ![register-mobile](/docs/testing/lighthouse/register-mobile.png) | ![register-desktop](/docs/testing/lighthouse/register-desktop.png) | None |
-
-## Code Validation
-
-[CI Python Linter](http://pep8online.com/) was used to validate the custom python files. No errors were found.
-
-| File | Screenshot | Pass |
-| :-: | :-: | :-: |
-| [admin](/edblog/admin.py) | ![admin](/docs/testing/admin.png) | &check; |

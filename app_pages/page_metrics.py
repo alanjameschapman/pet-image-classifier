@@ -39,12 +39,12 @@ def page_metrics():
     st.image((f"{outputs}/learning_curve_tuned_acc.png"), caption="Training accuracy")
 
     st.write('The training accuracy curves converged at around 80% and there are no fluctuations or divergences.'
-    'We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
+    ' We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
 
     st.image((f"{outputs}/learning_curve_tuned_loss.png"), caption="Training loss")
 
     st.write('The training loss curves converged at around 0.75 and there are no fluctuations or divergences.'
-    'We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
+    ' We can therefore conclude that the model has not overfitted and should perform well on unseen test data.')
 
     st.write("---")
 
@@ -56,9 +56,7 @@ def page_metrics():
     st.dataframe(df_evaluation)
 
     st.write('The model has an accuracy and loss of around 83% and 0.75 respectively. An accuracy of 83% '
-    'tells us that the model is good at predicting on unseen test data. Coupled with the dashboard giving three'
-    'top predictions based on accuracy, this value should be ample for our purposes. The loss tells us how far'
+    'tells us that the model is good at predicting on unseen test data. Coupled with the dashboard giving three '
+    'top predictions based on accuracy, this value should be ample for our purposes. The loss tells us how far '
     'the predicted values deviate from the actual values and 0.75 can be considered good for classification '
     'with 120 classes.')
-
-    st.write("---")
