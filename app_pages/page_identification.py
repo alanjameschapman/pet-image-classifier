@@ -17,7 +17,12 @@ def page_identification():
 
     st.write('Ensure your image is of good quality to improve prediction.\n\n'
     '- Lighting: not too dark or bright.\n\n'
-    '- Composition: only the dog, avoid including people or other distinct objects.\n\n')
+    '- Composition: only the dog, avoid including people or other distinct '
+    'objects.\n\n'
+    '- Orientation can be landscape or portrait.\n\n'
+    'Please note that the model assumes the picture is of a dog and is '
+    'trained to predict which breed it might be i.e. uploading a picture of '
+    'a cat will still predict 3 dog breeds!')
 
     image_buffer = st.file_uploader(label='Image uploader', type=['png', 'jpg', 'jpeg'], accept_multiple_files=False)
 

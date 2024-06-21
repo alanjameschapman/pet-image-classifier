@@ -4,7 +4,7 @@
 
 The client is an online veterinary clinic that offers video consultations with veterinarians. The client wants to develop an image classification dashboard that can identify the breed of a dog based on an image provided by the owner. This will help the consultants prepare for the consultation and ultimately provide better care for the dogs.
 
-The dashboard should also display the top 3 breeds that the dog might belong to (according to model certainty) along with images and key information. An intuitive and quantitive probability of each breed will be provided to help the consultant determine the animal in-consult. This will be particularly useful if the dog is mixed breed.
+The dashboard should also display the top 3 breeds that the dog might belong to according to model certainty. An intuitive and quantitive probability of each breed will be provided to help the consultant determine the animal in-consult. This will be particularly useful if the dog is mixed breed.
 
 The live link is [here](https://pet-image-classifier-5fbc327c6281.herokuapp.com/).
 
@@ -20,10 +20,10 @@ The client's business requirements were framed as user stories for the purposes 
 
 | As a consultant I can... | ...so that I can... | Acceptance Criteria | Mapping to data visualizations and ML tasks |
 | :- | :- | :- | :- |
-| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | Issue [#11](https://github.com/alanjameschapman/pet-image-classifier/issues/11) tasks:<ul><li>Provide an image upload widget on deployed pipeline and dashboard.</li><li>Display prediction on dashboard.</li></ul> |
-| See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. | Issue [#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) tasks:<ul><li> Display images and info based on prediction.</li></ul> |
-| Identify the top 3 breeds that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. | Issue [#13](https://github.com/alanjameschapman/pet-image-classifier/issues/13) tasks:<ul><li>Display images and info based on prediction.</li></ul>
-| Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant | Issue [#14](https://github.com/alanjameschapman/pet-image-classifier/issues/14) tasks:<ul><li>Perform and document manual testing.</li><li>Provide dashboard link to client for feedback.</li></ul> |
+| Identify the animal from an uploaded image | Prepare for the consultation. | Model can correctly predict with 95% accuracy. | Issue [#11](https://github.com/alanjameschapman/pet-image-classifier/issues/11) tasks:<br />- Provide an image upload widget on deployed pipeline and dashboard.<br />- Display prediction on dashboard. |
+| See a summary of key info, images, and conditions that the animal may have | Better discuss the animal's health with their owner. |  Images and info displayed on dashboard. | Issue [#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) tasks:<br />- Display images and info based on prediction. |
+| Identify the top 3 breeds that the image may belong to, ranked by probability | Visually identify the animal using conventional data analysis. | Animals displayed on dashboard visually correlate with uploaded image. | Issue [#13](https://github.com/alanjameschapman/pet-image-classifier/issues/13) tasks:<br />- Display images and info based on prediction. |
+| Use a dashboard (not an API) | Identify an animal from an image upload. | Dashboard is intuitive and easily accessible to consultant | Issue [#14](https://github.com/alanjameschapman/pet-image-classifier/issues/14) tasks:<br />- Perform and document manual testing.<br />- Provide dashboard link to client for feedback.|
 
 The 'top 3' requirement will be particularly useful for cross-breeds, such as Labradoodles and Cockapoos. The probability of each species will be provided alongside, to help the consultant determine the animal in-consult. 
 
@@ -40,8 +40,7 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 
 ![data-understanding](/docs/images/data-understanding.png)
 
-- The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification/).
-- There are 20,600 images split into 120 directories (dog breeds), with a total file size of 777MB. This gives around:
+The dataset has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification/). There are 20,600 images split into 120 directories (dog breeds), with a total file size of 777MB. This gives around:
 - File number per breed: 170 images.
 - Image size: 440x390px.
 - File size: 37kB.
@@ -148,7 +147,7 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 #### Page 2 - Animal identification
 
 - Provide an image upload widget.
-- Display the top 3 breeds that the animal may belong to, along with images and probabilities.
+- Display the top 3 breeds that the animal may belong to, along with probabilities.
 - Button/checkbox to select breed and display key info and common diseases (added to backlog).
 
 ![id_upload](/docs/images/id_upload.png)
@@ -174,28 +173,13 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 
 ### Future Work
 
-#### Issue [#9](https://github.com/alanjameschapman/pet-image-classifier/issues/9) - Plan monitoring and maintenance of the model
+| Issue | Description | User Story | Acceptance Criteria | Tasks |
+| - | - | - | - | - |
+| [#9](https://github.com/alanjameschapman/pet-image-classifier/issues/9) | Plan monitoring and maintenance of the model. | As a developer I can plan monitoring and maintenance of the model so that I can ensure the business tool retains value to the client. | - Monitoring and maintenance plan is documented.<br />- Business tool retains value to the client. | - Discuss and formulate a plan with the client.<br />- Document the plan with the client.<br />- Report all project findings. |
+| [#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) | See a summary of key info, images and common conditions | As a consultant I can see a summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner. | Images and info displayed on dashboard. | - Generate a json file with info per breed.<br />- Display images and info based on prediction. |
+| [#15](https://github.com/alanjameschapman/pet-image-classifier/issues/15) | Identify whether the image is a dog or not. | As a user I can be notified if the image is not a dog so that I can get value from the tool. | - Set threshold value(s) for dog breed prediction.<br />- If threshold not met, user notified. |
 
-As a developer I can plan monitoring and maintenance of the model so that I can ensure the business tool retains value to the client.
 
-**Acceptance Criteria**
-- Monitoring and maintenance plan is documented.
-- Business tool retains value to the client.
-
-**Tasks**
-- Discuss and formulate a plan with the client.
-- Document the plan with the client.
-- Report all project findings.
-
-#### Issue[#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) - See a summary of key info, images and common conditions
-
-As a consultant I can see a summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner.
-
-**Acceptance Criteria**
-- Images and info displayed on dashboard.
-
-**Tasks**
-- Display images and info based on prediction.
 
 ### Heroku
 
