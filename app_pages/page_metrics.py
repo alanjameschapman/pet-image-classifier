@@ -13,14 +13,21 @@ def page_metrics():
     base_dir = os.path.dirname((os.path.dirname(__file__)))
     outputs = os.path.join(base_dir, f'outputs/{version}')
 
-    st.header("Model Metrics")
+    st.header('Dataset')
 
-    st.write("Train, Validation and Test Set: Labels Frequencies")
+    st.markdown('''
+    The dataset used to train the model has been taken from Kaggle and is publicly available [here](https://www.kaggle.com/datasets/amandam1/120-dog-breeds-breed-classification/).
+    The dataset was reviewed with the client to confirm that there were no missing breeds commonly seen during consults.
+    There are 20,600 images split into 120 directories (dog breeds), with a total file size of 777MB. This gives around:
+    - File number per breed: 170 images.
+    - Image size: 440x390px.
+    - File size: 37kB.
+    ''')
 
     st.image((f"{outputs}/images_per_dir.png"), caption="Number of images per directory")
 
     st.write('The median is around 160 images per breed, with a range of around 100-230 images. '
-    'Outliers are saved in the `outlier_dirs.pkl` file and can be removed if training bias is identified.')
+    'Outliers were saved in the `outlier_dirs.pkl` file, to be removed if training bias was identified.')
     
     st.write("---")
 

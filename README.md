@@ -43,7 +43,7 @@ The 'top 3' requirement will be particularly useful for cross-breeds, such as La
 - File size: 37kB.
 - There are no Ethical or Privacy concerns regarding the dataset, which does not contain any personal information or sensitive data.
 
-The dataset was reviewed with the client to identify if there were any missing animals. The client was satisfied that the dataset was not deficient in any other animal that was commonly seen during consults.
+The dataset was reviewed with the client to confirm that there were no missing breeds commonly seen during consults.
 
 The dataset was then checked for quantity and quality:
 
@@ -74,7 +74,7 @@ The dataset was split into training, validation and test sets by the ratios of 7
 
 ### Model Development
 
-After trying two different models (v1 and v2), the accuracy and loss plots showed that both failed to converge over 10 epochs, with accuracy no higher than around 15%.
+After trying two different models (v1 and v2), the accuracy and loss plots showed that both failed to converge over 10 epochs, and fluctuated wildly.
 
 This indicated that the models were not learning from the data and would not be able to make accurate predictions. This was likely due to the dataset having too few images per animal - only 30 images on average.
 
@@ -84,24 +84,30 @@ This dataset is more suitable for the client's requirements as it contains a bet
 
 | Model | Accuracy | Loss | Comments |
 | :- | :-: | :-: | :- |
-| v1 (CI Malaria walkthrough) | ![v1-accuracy](/outputs/v1/model_training_acc.png) | ![v1-loss](/outputs/v1/model_training_losses.png) | The accuracy was around x and the loss was around y. |
-| v2 (Kaggle [walkthrough](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook)) | ![v2-accuracy](/outputs/v2/model_training_acc.png) | ![v2-loss](/outputs/v2/model_training_losses.png) | The accuracy was around x and the loss was around y. |
+| v1 | ![v1-accuracy](/outputs/v1/model_training_acc.png) | ![v1-loss](/outputs/v1/model_training_losses.png) | Learning curves did not converge, and fluctuated wildly. |
+| v2 | ![v2-accuracy](/outputs/v2/model_training_acc.png) | ![v2-loss](/outputs/v2/model_training_losses.png) | Learning curves did not converge, and fluctuated wildly. |
 | v5 | ![v5-accuracy](/outputs/v5/learning_curve_acc.png) | ![v5-loss](/outputs/v5/learning_curve_loss.png) | Learning curves converged at around 70% accuracy and a loss of 1.
 | v5 tuned | ![v5-accuracy](/outputs/v5/learning_curve_tuned_acc.png) | ![v5-loss](/outputs/v5/learning_curve_tuned_loss.png) | Learning curves converged at around 80% accuracy and a loss of 0.75.
 
 ### Architecture
 
-Based on the author's research for multi-class models, it was determined that despite the larger dataset, transfer learning would still be required. This required taking an existing model which was 'pre-trained' on a separate and very large image dataset, and placing the classifier model on top of it to create a 'compound' model. The base model has generically useful features which can be repurposed for the classifier task.
+Based on the author's research for multi-class models, it was determined that despite the larger dataset, transfer learning would still be required. This required taking an existing model which was 'pre-trained' on a separate and very large image dataset, which has generically useful features which can be repurposed for the classifier task. Here is the base model:
 
 ![base model summary](/docs/images/v5_base_model_summary.png)
 
-The resulting model (v5) was fine-tuned by 'unfreezing' the top few layers of the pre-trained model so that they can be trained together with the classifier model (v5 tuned).
+Note the required input shape of (224, 224, 3) which is the expected image size in RGB, which our input images should conform to. The classifier model is placed onto this base model to create a 'compound' model.
 
 ![v5 model summary](/docs/images/v5_model_summary.png)
 
+Note how the number of non-trainable parameters matches that of the base model which has been frozen for initial training, producing the v5 model.
+
+The v5 model was then fine-tuned by 'unfreezing' the top few layers of the base model so that they could be trained together with the classifier model. The resulting model is v5 tuned which is the final model used for training for this project.
+
+![v5 tuned model summary](/docs/images/v5_model_tuned_summary.png)
+
 ### Optimization
 
-- Optimizer: Adam was used to minimise the learning loss adaptively, then rmsprop was used for fine-tuning.
+- Optimizer: Adam optimisation was used to minimise the learning loss adaptively, then rmsprop was used for the fine-tuning stage.
 - Learning rate: 0.0001 was used to train the classifier, but when the top layers of the pre-trained model were unfrozen this was reduced by a factor of 10 to avoid overfitting.
 - Dropout: 0.2 was used to minimize overfitting and encourage a generalized model which would perform better on new data.
 
@@ -127,32 +133,39 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 
 #### Page 1 - Project Overview
 
+**Features**:
 - Display the project name, description, and purpose.
 - Describe the business requirements.
-- Describe the dataset.
-- Describe the dataset used to train the model.
 - Provide a link to the GitHub repository readme.
+
+![Overview](/docs/images/overview.png)
 
 #### Page 2 - Animal identification
 
 - Provide an image upload widget.
-- Display the predicted species of the animal.
 - Display the top 3 breeds that the animal may belong to, along with images and probabilities.
-- Button/checkbox to select breed and display key info and common diseases.
-- Link to the dataset.
+- Button/checkbox to select breed and display key info and common diseases (added to backlog).
+
+![id_upload](/docs/images/id_upload.png)
+![predictions](/docs/images/predictions.png)
 
 #### Page 3 - Hypotheses and Validation
 
 - Display the hypotheses stated above (see epic 2) and how they were validated.
 - Display the results of the validation.
 
+![hypotheses](/docs/images/hypotheses.png)
+
 #### Page 4 - Model Performance Metrics
 
-Display the model's performance metrics, including:
-- Learning curves (plots of accuracy and loss)
-- Confusion matrix for a batch size of 32 (not possible to display for the entire dataset of 120 breeds)
-- Generalised model performance on test set (table of accuracy and loss).
-- Precision, recall, and F1 score?
+- Describe the dataset used to train, validate and test the model.
+- Display the model's performance metrics, including:
+    - Learning curves (plots of accuracy and loss)
+    - Generalised model performance on test set (table of accuracy and loss).
+
+![metrics](/docs/images/num_images_per_dir.png)
+![learning_curves](/docs/images/learning_curves.png)
+![metrics](/docs/images/generalised_performance.png)
 
 ### Heroku
 
@@ -213,11 +226,8 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 ### Content 
 
 - I used a Tensorflow tutorial for implementing transfer learning. I modified it from binary to multiclassification. Google colab link [here](https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/images/transfer_learning.ipynb?force_kitty_mode=1&force_corgi_mode=1#scrollTo=PpA8PlpQKygw).
-- The following Kaggle notebook provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
-- Cherry Leave Mildew Detection [repo](https://github.com/oks-erm/ML-mildew-detection/tree/main)
-
-- [file cmp method](https://docs.python.org/3/library/filecmp.html) for comparing files and identifying duplicates.
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- The following Kaggle notebooks provided inspiration for creating a multi-class image classifier: see [here](https://www.kaggle.com/code/ahmadjaved097/multiclass-image-classification-using-cnn/notebook) by Ahmad Javed and [here](https://www.kaggle.com/code/canentay/inceptionv3-pet-classification/notebook) by Caner Tay.
+- Cherry Leave Mildew Detection [repo](https://github.com/oks-erm/ML-mildew-detection/tree/main).
 
 ### Media
 
@@ -228,14 +238,6 @@ The Minimum Viable Product (MVP) would be presented at the interim mentor meetin
 - My mentor Marcel, for his guidance and support.
 
 # Manual Testing
-
-## User Stories
-
-User Stories were assessed and categorised as either developer or client. These were tracked throughout the project as [GitHub issues](https://github.com/users/alanjameschapman/projects/5). Links are provided to see the development notes and screenshots for each.
-
-| As a user I can... | ...so that I can... | Checked | Issue# |
-| :- | :- | :-: | :-: |
-| view all posts summarized | browse topics | &check; | [23](https://github.com/alanjameschapman/whiteboard/issues/23) |
 
 ## User Input Validation
 
@@ -267,25 +269,6 @@ Browser compatibility was tested throughout the project as shown below. Using th
 | :-: | :-: | :-: |
 | &check; | &check; | &check; |
 
-## Bugs
-
-Bugs were tracked throughout the project as GitHub issues. Links are provided to see the development notes and screenshots for each.
-
-### Resolved
-
-| Issue | Problem | Screenshot | Solution | Screenshot |
-| :-: | :-: | :-: | :-: | :-: |
-| [#29](https://github.com/alanjameschapman/whiteboard/issues/29) | Edit button not populating comment box for editing | ![#29](/docs/issues/29-1.png) | Javascript amended from "id_body" to "id_content | ![#29](/docs/issues/29-2.png) |
-
-
-### Unresolved
-
-The only unresolved bug is the password reset not working. This does not affect the website functionality because the admin can reset passwords manually.
-
-| Issue# | Problem | Screenshot | Comment |
-| :-: | :-: | :-: | :-: |
-[36](https://github.com/alanjameschapman/whiteboard/issues/36) | password reset not working | ![#36](/docs/issues/36-1.png) | This bug and associated [Issue#7](https://github.com/alanjameschapman/whiteboard/issues/7) for password reset moved to backlog for future development. |
-
 ## Lighthouse
 
 The WAVE Web Accessibility Evaluation Tool was used throughout the project to check for accessibility issues. Lighthouse was then used to test the performance, accessibility, best practices and SEO of the deployed site. The PWA score not showing is a [known feature](https://stackoverflow.com/questions/60603960/why-lighthouse-pwa-score-is-blank-even-though-the-page-is-audited).
@@ -295,37 +278,6 @@ Page | Mobile | Desktop | Comment |
 | [register](https://whiteboard-app-742f545f1848.herokuapp.com/accounts/signup/) | ![register-mobile](/docs/testing/lighthouse/register-mobile.png) | ![register-desktop](/docs/testing/lighthouse/register-desktop.png) | None |
 
 ## Code Validation
-
-### HTML
-
-[W3C Markup Validation Service](https://validator.w3.org/) was used to validate the HTML. The Django template language cannot be validated by URI using the W3C validator, so the rendered HTML was copied and pasted into the direct input form for each page.
-
-| Page | W3C URL | Screenshot | Notes | Pass |
-| :-: | :-: | :-: | :-: | :-: |
-| [register](/registration/signup.html) | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fwhiteboard-app-742f545f1848.herokuapp.com%2Faccounts%2Fsignup%2F) | ![register](/docs/testing/register.png) | Errors relate to built-in Django form and don't affect UX or functionality. | &check; |
-
-
-### CSS
-
-CSS was validated by direct input using [jigsaw W3C Validation Service](https://jigsaw.w3.org/css-validator/) and validates as CSS level 3 + SVG:
-
-<p>
-    <a href="http://jigsaw.w3.org/css-validator/check/referer">
-        <img style="border:0;width:88px;height:31px"
-            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-            alt="Valid CSS!"/>
-    </a>
-</p>
-
-### JavaScript
-
-[jshint](https://jshint.com/) was used to validate the only custom JavaScript file, [comments.js](/staticfiles/js/comments.js), used to edit, delete and approve comments.
-
-| File | Screenshot | Description | Pass |
-| :-: | :-: | :-: | :-: |
-| [comments](/staticfiles/js/comments.js) | ![comments.js](/docs/testing/comments-js.png) | One warning about a function 'getCookie' declared in a loop referencing an outer scoped variable. Reviewed but syntax deemed not difficult to understand. | &check; |
-
-### Python
 
 [CI Python Linter](http://pep8online.com/) was used to validate the custom python files. No errors were found.
 

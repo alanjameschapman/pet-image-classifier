@@ -13,13 +13,9 @@ from src.ml.predictive_analysis import (
 def page_identification():
     '''Function to display the breed identification page'''
 
-    st.write('You can download the dataset for live prediction here:')
+    st.header('Upload your image below to identify the breed.')
 
-    st.write("---")
-
-    image_buffer = st.file_uploader('Upload image of dog to identify',
-                                     type=['png', 'jpg', 'jpeg'],
-                                     accept_multiple_files=False)
+    image_buffer = st.file_uploader(label='Image uploader', type=['png', 'jpg', 'jpeg'], accept_multiple_files=False)
 
     if image_buffer is not None:
         img_pil = (Image.open(image_buffer)).convert('RGB')
@@ -35,6 +31,6 @@ def page_identification():
         predictions = load_model_and_predict(resized_img, version=version)
 
         # Print the top 3 predictions
-        st.write('Predictions for this image, in descending order of certainty are:')
+        st.write('Normalised predictions for this image, in descending order of certainty are:')
 
         st.text('\n'.join(predictions))
