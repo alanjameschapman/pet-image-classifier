@@ -177,7 +177,7 @@ To present the model predictions to the client, a Streamlit dashboard is used. T
 | - | - | - | - | - |
 | [#9](https://github.com/alanjameschapman/pet-image-classifier/issues/9) | Plan monitoring and maintenance of the model. | As a developer I can plan monitoring and maintenance of the model so that I can ensure the business tool retains value to the client. | - Monitoring and maintenance plan is documented.<br />- Business tool retains value to the client. | - Discuss and formulate a plan with the client.<br />- Document the plan with the client.<br />- Report all project findings. |
 | [#12](https://github.com/alanjameschapman/pet-image-classifier/issues/12) | See a summary of key info, images and common conditions | As a consultant I can see a summary of key info, images, and conditions that the animal may have so that I can better discuss the animal's health with their owner. | Images and info displayed on dashboard. | - Generate a json file with info per breed.<br />- Display images and info based on prediction. |
-| [#15](https://github.com/alanjameschapman/pet-image-classifier/issues/15) | Identify whether the image is a dog or not. | As a user I can be notified if the image is not a dog so that I can get value from the tool. | - Set threshold value(s) for dog breed prediction.<br />- If threshold not met, user notified. |
+| [#15](https://github.com/alanjameschapman/pet-image-classifier/issues/15) | Identify whether the image is a dog or not. | As a user I can be notified if the image is not a dog so that I can get value from the tool. |  Model predicts that image is not a dog with a high degree of certainty | - Set threshold value(s) for dog breed prediction.<br />- If threshold not met, user notified. |
 
 
 
